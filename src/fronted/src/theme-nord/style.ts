@@ -16,7 +16,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
   const { injectGlobal, css } = emotion
   const palette = getPalette(manager)
   const radius = manager.get(ThemeSize, "radius")
-  const neutral = palette("neutral", 0.87)
+  const neutral = palette("neutral")
   const surface = palette("surface")
   const line = palette("line")
   const highlight = palette("secondary", 0.38)
