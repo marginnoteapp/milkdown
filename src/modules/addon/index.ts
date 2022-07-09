@@ -8,6 +8,7 @@ export default defineConfig({
   name: Addon.title,
   key: "addon",
   intro: `当前版本: ${Addon.version}`,
+  link: "https://github.com/marginnoteapp/milkdown",
   settings: [
     {
       key: "panelPosition",

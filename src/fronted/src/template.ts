@@ -11,7 +11,7 @@ import "./style/index.css"
 import "./style/template.css"
 import "katex/dist/katex.min.css"
 import "prism-themes/themes/prism-nord.min.css"
-import { decode } from "js-base64"
+import { decode}  from "../../utils/third party/base64"
 import { diagram } from "@milkdown/plugin-diagram"
 
 const { size, content, dark } = JSON.parse(decode("@@params@@"))

@@ -5,7 +5,7 @@ import {
   editorViewCtx,
   serializerCtx
 } from "@milkdown/core"
-import { decode, encode } from "js-base64"
+import {decode,encode }  from "../../utils/third party/base64"
 import { forceUpdate, replaceAll, getHTML } from "@milkdown/utils"
 import { cursor } from "@milkdown/plugin-cursor"
 import { nordDark, nordLight } from "./theme-nord/"

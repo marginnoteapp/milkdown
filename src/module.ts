@@ -10,13 +10,18 @@ export const more: ISection = {
   rows: [
     {
       type: CellViewType.PlainText,
-      label: "由 Milkdown 提供支持",
+      label: "由 Milkdown 提供支持。",
       link: "https://milkdown.dev/zh-hans"
     },
     {
       type: CellViewType.PlainText,
-      label: "基于 OhMyMN v4",
-      link: "https://ohmymn.vercel.app"
+      label: "基于 OhMyMN v4 进行开发。",
+      link: "https://github.com/marginnoteapp/ohmymn"
+    },
+    {
+      type: CellViewType.PlainText,
+      label: "本插件开源，点击查看源码，欢迎参与开发。",
+      link: "https://github.com/marginnoteapp/milkdown"
     },
     {
       type: CellViewType.PlainText,

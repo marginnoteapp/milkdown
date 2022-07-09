@@ -1,6 +1,6 @@
 import { MN } from "~/const"
 import { delay, evaluateJavaScript } from "~/utils/common"
-import Base64 from "~/utils/third party/base64"
+import { encode } from "~/utils/third party/base64"
 
 let loaded = false
 const viewDidLoad = () => {
@@ -37,7 +37,7 @@ const viewWillDisappear = async (animated: boolean) => {
   const { width, height } = JSON.parse(rect)
   self.retfunc({
     html,
-    text,
+    text:text.replace(/(?:\n)*$/,""),
     // 是否重新渲染
     dirty: self.text !== text,
     size: { width, height }
@@ -52,7 +52,7 @@ const webViewDidFinishLoad = async (webView: UIWebView) => {
   // 有点坑爹
   await evaluateJavaScript(
     self.webView,
-    `initMilkdown("${Base64.encode(self.text)}", ${JSON.stringify({
+    `initMilkdown("${encode(self.text)}", ${JSON.stringify({
       tools: self.globalProfile.addon.toolbar,
       dark: self.globalProfile.addon.darkmode
     })})`

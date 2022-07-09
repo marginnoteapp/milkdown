@@ -23,7 +23,6 @@ specifiers:
   '@milkdown/theme-pack-helper': ^6.2.0
   '@milkdown/utils': ^6.2.0
   '@types/node': ^18.0.3
-  js-base64: ^3.7.2
   katex: ^0.16.0
   material-icons: ^1.11.4
   prism-themes: ^1.9.0
@@ -51,7 +50,6 @@ dependencies:
   '@milkdown/preset-gfm': 6.2.0_aeddqgehelz6qlor2kp3vuhcii
   '@milkdown/prose': 6.2.0
   '@milkdown/utils': 6.2.0_zd7ndzeswl7rru6bjrz5nnz66y
-  js-base64: 3.7.2
   katex: 0.16.0
   material-icons: 1.11.4
   prism-themes: 1.9.0
@@ -1724,10 +1722,6 @@ packages:
   /is-plain-obj/4.1.0:
     resolution: {integrity: sha512-+Pgi+vMuUNkJyExiMBt5IlFoMyKnr5zhJ4Uspz58WOhBF5QoIZkFyNHIbBAtHwzVAgk5RtndVNsDRN61/mmDqg==}
     engines: {node: '>=12'}
-
-  /js-base64/3.7.2:
-    resolution: {integrity: sha512-NnRs6dsyqUXejqk/yv2aiXlAvOs56sLkX6nUdeaNezI5LFFLlsZjOThmwnrcwh5ZZRwZlCMnVAY3CvhIhoVEKQ==}
-    dev: false
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
