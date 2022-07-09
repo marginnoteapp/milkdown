@@ -1,0 +1,11 @@
+node_modules
+dist
+api
+yarn.lock
+.vscode
+yarn-error.log
+test*
+.eslintcache
+.pnpm*
+.DS_Store
+.local_history

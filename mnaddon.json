@@ -1,0 +1,11 @@
+{
+  "addonid": "marginnote.extension.milkdown",
+  "author": "ourongxing",
+  "title": "Milkdown",
+  "version": "1.0.0",
+  "marginnote_version_min": "3.7.18",
+  "cert_key": "",
+  "global_profile_key": "milkdown_profile_global",
+  "doc_profile_key": "milkdown_profile_doc",
+  "notebook_profile_key": "milkdown_profile_notebook"
+}
