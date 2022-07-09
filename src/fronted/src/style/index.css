@@ -1,0 +1,32 @@
+.milkdown .editor>* {
+  margin: 0 0 1em 0px !important
+}
+
+.milkdown .editor {
+  padding: 1.25em !important ;
+  outline: none !important ;
+}
+
+.milkdown .editor .strong {
+  font-weight: bolder !important;
+}
+
+.milkdown .editor blockquote {
+  padding-left: 1.5em !important;
+}
+
+.milkdown ol,ul {
+  padding-inline-start: 26px !important;
+}
+
+.milkdown-menu-wrapper .milkdown {
+  overflow: auto;
+  height: calc(100vh - 4rem);
+}
+
+.iframe {
+  display: inline-block;
+  width: 100%;
+  height: 500px;
+  border: none;
+}
