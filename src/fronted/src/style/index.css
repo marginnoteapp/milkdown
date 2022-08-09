@@ -1,9 +1,13 @@
+body {
+  margin:0;
+  font-size: 16;
+}
+
 .milkdown .editor>* {
-  margin: 0 0 1em 0px !important
+  margin: 0 0 1.5em 0px !important
 }
 
 .milkdown .editor {
-  padding: 1.25em !important ;
   outline: none !important ;
 }
 
@@ -24,9 +28,12 @@
   height: calc(100vh - 4rem);
 }
 
-.iframe {
-  display: inline-block;
-  width: 100%;
-  height: 500px;
-  border: none;
+.milkdown .editor table p {
+  line-height: initial !important;
+  padding: 1em 0;
+}
+
+.task-list-item label {
+  left: -1.7em !important;
+  margin: 0.25em 0 !important;
 }

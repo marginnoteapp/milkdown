@@ -1,14 +1,5 @@
 /* Copyright 2021, Milkdown by Mirone. */
-export const typography = [
-  "Roboto",
-  "HelveticaNeue-Light",
-  "Helvetica Neue Light",
-  "Helvetica Neue",
-  "Helvetica",
-  "Arial",
-  "Lucida Grande",
-  "sans-serif"
-]
+export const typography = ["-apple-system", "PingFang SC"]
 
 export const code = [
   "Consolas",

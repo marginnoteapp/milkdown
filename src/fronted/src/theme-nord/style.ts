@@ -50,7 +50,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
   const paragraph = css`
     p {
       font-size: 1em;
-      line-height: 1.5;
+      line-height: 1;
       letter-spacing: 0.5px;
     }
   `
@@ -71,15 +71,15 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 
   const heading = css`
     h1 {
-      font-size: 3em;
+      font-size: 2.5em;
       line-height: 1.167;
     }
     h2 {
-      font-size: 2.5em;
+      font-size: 2.25em;
       line-height: 1.2;
     }
     h3 {
-      font-size: 2.125em;
+      font-size: 2em;
       line-height: 1.05;
     }
     h4 {
@@ -95,8 +95,8 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
       line-height: 1;
     }
     .heading {
-      margin: 40px 0;
-      font-weight: 400;
+      margin: 1em 0 !important;
+      font-weight: 500;
     }
   `
 
@@ -241,9 +241,6 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
       width: 100%;
       overflow: auto;
       border-radius: ${manager.get(ThemeSize, "radius")};
-      p {
-        line-height: unset;
-      }
     }
     tr {
       ${manager.get(ThemeBorder, "bottom")};

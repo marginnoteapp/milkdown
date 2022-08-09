@@ -5,10 +5,10 @@ import {
   editorViewCtx,
   serializerCtx
 } from "@milkdown/core"
-import {decode,encode }  from "../../utils/third party/base64"
+import { decode, encode } from "../../utils/third party/base64"
 import { forceUpdate, replaceAll, getHTML } from "@milkdown/utils"
 import { cursor } from "@milkdown/plugin-cursor"
-import { nordDark, nordLight } from "./theme-nord/"
+import { nordDark, nordLight } from "./theme-nord"
 import { diagram } from "@milkdown/plugin-diagram"
 import { clipboard } from "@milkdown/plugin-clipboard"
 import { gfm } from "@milkdown/preset-gfm"
@@ -22,7 +22,6 @@ import { upload } from "@milkdown/plugin-upload"
 import { tooltip } from "@milkdown/plugin-tooltip"
 import { math } from "@milkdown/plugin-math"
 import "material-icons/iconfont/material-icons.css"
-import "@fontsource/roboto"
 import "./style/index.css"
 import "./style/editor.css"
 import "katex/dist/katex.min.css"
@@ -93,8 +92,10 @@ function getRect() {
   )
 }
 
-function zoom(size: number) {
-  document.querySelector("body")!.style.fontSize = size + "px"
+function simulateCardRender() {
+  const table = document.querySelector(".milkdown .tableWrapper table")
+  if (table)
+    table.setAttribute("style", "width: 100% !important;margin: 0 !important;")
 }
 
 // @ts-ignore
@@ -110,4 +111,4 @@ window.getMarkdown = getMarkdown
 // @ts-ignore
 window.getHTML = getMDHTML
 // @ts-ignore
-window.zoom = zoom
+window.simulateCardRender = simulateCardRender
