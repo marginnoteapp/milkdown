@@ -6,8 +6,7 @@
   "description": "",
   "scripts": {
     "dev": "tsx ./build.ts ",
-    "zip": "cd ./dist && zip -qrm \"${npm_package_name}_v$npm_package_version.mnaddon\" *",
-    "build": "NODE_ENV=production pnpm dev && pnpm zip",
+    "build": "NODE_ENV=production pnpm dev",
     "html:build": "cd ./src/fronted && pnpm build && pnpm build:t",
     "html:dev": "cd ./src/fronted && pnpm dev",
     "build:iPad": "pnpm build && airdrop ./dist/milkdown*.mnaddon",

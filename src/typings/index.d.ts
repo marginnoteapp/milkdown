@@ -19,6 +19,7 @@ declare global {
     html: string
     text: string
     respath: string
+    cardWidth: number
     retfunc: (r: {
       html: string
       text: string

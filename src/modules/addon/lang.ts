@@ -1,76 +1,50 @@
-import { MN } from "~/const"
-
+import { Addon, MN } from "~/const"
 const zh = {
-  link: "https://busiyi.notion.site/Gesture-468bbb3eca424c3bb85842e0b26138b8",
+  link: "https://bbs.marginnote.cn/t/topic/34772",
+  intro: `当前版本：${Addon.version}`,
   option: {
-    profile: ["配置 1", "配置 2", "配置 3", "配置 4", "初始化"],
-    has_title_then: ["不转为标题", "合并标题", "覆盖标题"],
     panel_position: ["自动", "靠左", "居中", "靠右"],
     panel_height: ["高点", "标准", "矮点"],
-    remove_excerpt: ["立即删除", "等会删除", "不删除"]
+    compatibility: "否"
   },
   label: {
-    has_title_then: "如果标题存在",
-    quick_switch: "模块快捷开关",
-    profile: "选择配置文件",
-    remove_excerpt: "合并标题后, 摘录",
     panel_position: "面板显示位置",
     panel_height: "面板显示高度",
     panle_control: "双击打开面板",
-    screen_always_on: "保持屏幕常亮",
-    lock_excerpt: "锁定摘录文字",
-    auto_backup: "自动备份配置",
-    publisher: "出版社",
-    publication_date: "出版时间",
-    publication_place: "出版地",
-    other_info: "其他信息",
-    page_offset: "页码偏移量",
-    author: "作者",
-    type: "类型",
-    show_doc_info: "显示 / 隐藏文档信息"
+    compatible: "兼容其他插件",
+    toolbar: "Milkdown 工具栏",
+    darkmode: "Milkdown 暗黑模式",
+    font_size: "卡片字体大小"
   },
   help: {
-    profile: "【当前笔记本】不同场景，不同配置。",
-    auto_backup: "首先你需要，MagicAction for Card -> 配置管理 -> 写入配置",
-    has_title_then: "拖拽选区合并进卡片，如果会产生新标题，则"
+    compatible: "修改后请重启 MN。不保证完全兼容。",
+    font_size:
+      "卡片上的 Markdown 字体显示大小，无法直接改变已有卡片的字体大小。"
   }
 }
 
 const en: typeof zh = {
-  link: "https://www.notion.so/huangkewei/milkdown-wiki-faea66243fb54149b9e7067f61142a9d",
+  link: "https://bbs.marginnote.cn/t/topic/34772",
+  intro: `Current version: ${Addon.version}`,
   option: {
-    profile: ["Profile 1", "Profile 2", "Profile 3", "Profile 4", "Initialize"],
-    remove_excerpt: ["Remove Now", "Remove Later", "Not Remove"],
-    has_title_then: ["Keep Intact", "Merge", "Override"],
     panel_position: ["Auto", "Left", "Center", "Right"],
-    panel_height: ["Higher", "Standard", "Lower"]
+    panel_height: ["Higher", "Standard", "Lower"],
+    compatibility: "No"
   },
   label: {
-    has_title_then: "If Title Exists",
-    quick_switch: "Quick Switch",
-    profile: "Choose Profile",
-    remove_excerpt: "After Merge, Excerpt",
     panel_position: "Panel Position",
     panel_height: "Panel Height",
     panle_control: "Double Click to Open",
-    screen_always_on: "Keep Screen Always On",
-    lock_excerpt: "Lock Excerpt Text",
-    auto_backup: "Auto Backup Profile",
-    page_offset: "Page Offset",
-    publisher: "Publisher",
-    publication_date: "Publication Date",
-    publication_place: "Publication Place",
-    other_info: "Other Info",
-    author: "Author",
-    type: "Type",
-    show_doc_info: "Show / Hidden Doc Info"
+    compatible: "Compatible with others",
+    toolbar: "Milkdown Toolbar",
+    darkmode: "Milkdown Darkmode",
+    font_size: "Card Font Size"
   },
   help: {
-    profile: "[Current Notebook] Different scenes, different profile",
-    auto_backup:
-      "First you need to do, MagicAction for Card —> Manage Profile -> Write Profile",
-    has_title_then:
-      "Drag and drop the selection to merge into the card, and if a new title will be created by milkdown, then"
+    compatible:
+      "Please restart MN after modifying. Not guaranteed to be fully compatible.",
+    font_size:
+      "Card font size of markdown. Cannot directly change existing card font size."
   }
 }
 

@@ -28,16 +28,15 @@ const viewWillDisappear = async (animated: boolean) => {
     self.retfunc({ html: self.html, text: self.text, dirty: false })
     return
   }
-  const { fontSize } = self.globalProfile.addon
   const html = await evaluateJavaScript(self.webView, "getHTML()")
-  const text = await evaluateJavaScript(self.webView, "getMarkdown()")
-  await evaluateJavaScript(self.webView, `zoom(${fontSize})`)
-  await evaluateJavaScript(self.webView, `document.body.style.width = "508px"`)
+  const text = (await evaluateJavaScript(self.webView, "getMarkdown()")).trim()
+  await evaluateJavaScript(self.webView, `document.body.style.width = "400px"`)
+  await evaluateJavaScript(self.webView, `simulateCardRender()`)
   const rect = await evaluateJavaScript(self.webView, "getRect()")
   const { width, height } = JSON.parse(rect)
   self.retfunc({
     html,
-    text:text.replace(/(?:\n)*$/,""),
+    text: text.replace(/(?:\n)*$/, ""),
     // 是否重新渲染
     dirty: self.text !== text,
     size: { width, height }

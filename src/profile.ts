@@ -8,7 +8,6 @@ const globalProfilePreset = {
     panelHeight: [1],
     darkmode: false,
     toolbar: [],
-    fontSize: "16",
     compatibility: [0]
   }
 }

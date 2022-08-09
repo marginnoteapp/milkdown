@@ -121,7 +121,7 @@ const onPopupMenuOnNote: EventHandler = async sender => {
   tmp.isChangeExcerptRange = false
   tmp.isProcessNewExcerpt = false
   const success = await delayBreak(
-    10,
+    20,
     0.05,
     () => tmp.isChangeExcerptRange || tmp.isProcessNewExcerpt
   )

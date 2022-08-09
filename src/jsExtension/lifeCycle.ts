@@ -11,12 +11,13 @@ import { inst as settingViewControllerInst } from "~/settingViewController"
 import { inst as markdownEditControllerInst } from "~/markdownEditController"
 import { UIWindow } from "~/typings"
 import { deepCopy } from "~/utils"
-import { getObjCClassDeclar, showHUD } from "~/utils/common"
+import { getObjCClassDeclar, openUrl, showHUD } from "~/utils/common"
 import { readProfile, removeProfile, writeProfile } from "~/utils/profile"
 import { Range } from "~/utils/profile/typings"
 import { eventHandlers } from "./handleReceivedEvent"
 import { closePanel, layoutViewController } from "./switchPanel"
 import Base64 from "~/utils/third party/base64"
+import popup from "~/utils/popup"
 
 const SettingViewController = JSB.defineClass(
   getObjCClassDeclar("SettingViewController", "UITableViewController"),
@@ -48,14 +49,13 @@ export const initMarkdownEditController = () => {
   }
 
   const renderFunc = (html: string, text: string, respath: string) => {
-    const { darkmode, fontSize } = self.globalProfile.addon
+    const { darkmode } = self.globalProfile.addon
     return self.renderTemplate.replace(
       "@@params@@",
       Base64.encode(
         JSON.stringify({
           content: text,
-          dark: darkmode,
-          size: Number(fontSize)
+          dark: darkmode
         })
       )
     )
@@ -68,7 +68,7 @@ export const initMarkdownEditController = () => {
 
   const { compatibility } = self.globalProfile.addon
   Application.sharedInstance().regsiterHtmlCommentEditor(
-    { title: "MilkDown", image },
+    { title: "Milkdown", image },
     editorFunc,
     renderFunc,
     ["MilkdownEditor", "MarkDownEditor", "MarkdownEditor"][compatibility[0]]
@@ -177,17 +177,35 @@ const sceneDidDisconnect = () => {
     })
 }
 
-const addonWillDisconnect = () => {
+const addonWillDisconnect = async () => {
   console.log("Addon disconected", "lifeCycle")
   // could not get the value of self.window
-  showHUD(lang.disconnect_addon, 2, _window)
-  removeProfile()
+  const { option } = await popup(
+    {
+      message: lang.bug,
+      buttons: [lang.sure, lang.update]
+    },
+    ({ buttonIndex }) => ({
+      option: buttonIndex
+    })
+  )
+  switch (option) {
+    case 0: {
+      removeProfile()
+      // could not get the value of self.window
+      showHUD(lang.disconnect_addon, 2, _window)
+      break
+    }
+    case 1: {
+      openUrl("https://bbs.marginnote.cn/t/topic/34772")
+    }
+  }
 }
 
 const sceneWillResignActive = () => {
   // or go to the background
   console.log("Window is inactivation", "lifeCycle")
-  !MN.isMac && closePanel()
+  // !MN.isMac && closePanel()
   if (self.docmd5)
     writeProfile({
       range: Range.All,

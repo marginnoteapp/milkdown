@@ -3,11 +3,11 @@ import { CellViewType } from "~/typings/enum"
 import { defineConfig } from "~/profile"
 import { lang } from "./lang"
 
-const { label, help, option } = lang
+const { label, help, option, intro } = lang
 export default defineConfig({
   name: Addon.title,
   key: "addon",
-  intro: `当前版本: ${Addon.version}`,
+  intro,
   link: "https://github.com/marginnoteapp/milkdown",
   settings: [
     {
@@ -30,24 +30,20 @@ export default defineConfig({
     {
       key: "compatibility",
       type: CellViewType.Select,
-      label: "兼容其他插件",
-      option: ["否", "MarkDown", "MyMarkDown"]
+      label: label.compatible,
+      help: help.compatible,
+      option: [option.compatibility, "MarkDown", "MyMarkDown"]
     },
     {
       key: "toolbar",
       type: CellViewType.MuiltSelect,
-      label: "Milkdown 工具栏",
+      label: label.toolbar,
       option: ["Slash", "Tooltip", "Menu"]
     },
     {
       key: "darkmode",
       type: CellViewType.Switch,
-      label: "Milkdown 暗黑模式"
-    },
-    {
-      key: "fontSize",
-      type: CellViewType.InlineInput,
-      label: "字体显示大小"
+      label: label.darkmode
     }
   ]
 })
