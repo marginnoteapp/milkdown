@@ -6,13 +6,13 @@ import {
   serializerCtx,
   Ctx
 } from "@milkdown/core"
-import { decode } from "../../utils/third party/base64"
-import { getHTML, insert } from "@milkdown/utils"
+import { decode, encode } from "../../utils/third party/base64"
+import { getHTML, replaceAll } from "@milkdown/utils"
 import { cursor } from "@milkdown/plugin-cursor"
-import { nordDark, nordLight } from "./theme-nord"
+import { nord } from "./theme-nord"
 import { diagram } from "@milkdown/plugin-diagram"
 import { clipboard } from "@milkdown/plugin-clipboard"
-import { doc, gfm } from "@milkdown/preset-gfm"
+import { gfm } from "@milkdown/preset-gfm"
 import { emoji } from "@milkdown/plugin-emoji"
 import { prism } from "@milkdown/plugin-prism"
 import { slash } from "@milkdown/plugin-slash"
@@ -26,20 +26,18 @@ import "material-icons/iconfont/outlined.css"
 import "./style/index.css"
 import "./style/editor.css"
 import "katex/dist/katex.min.css"
-import "prism-themes/themes/prism-nord.min.css"
 import { TextSelection } from "@milkdown/prose/state"
+import { appendStyle, prismDark, prismLight } from "./theme-nord/prismCSS"
 
 let editable = true
 let editor: Editor
 
-const initMilkdown = async (
+async function initMilkdown(
   defaultValue = "",
-  option = {
-    dark: false,
-    tools: [0, 1, 2]
-  }
-) => {
-  const { dark, tools } = option
+  option = { color: "#fff", dark: false, tools: [0, 1, 2] }
+) {
+  const { color, dark, tools } = option
+  appendStyle(dark ? prismDark : prismLight)
   editor = Editor.make().config(ctx => {
     ctx.set(defaultValueCtx, decode(defaultValue))
     ctx.set(editorViewOptionsCtx, { editable: () => editable })
@@ -54,7 +52,7 @@ const initMilkdown = async (
     editor = editor.use(menu)
   }
   editor = await editor
-    .use(dark ? nordDark : nordLight)
+    .use(nord(dark, color))
     .use(clipboard)
     .use(history)
     .use(indent)
@@ -68,7 +66,7 @@ const initMilkdown = async (
     .create()
 }
 
-const getMarkdown = () => {
+function getMarkdown() {
   return editor.action(ctx => {
     const editorView = ctx.get(editorViewCtx)
     const serializer = ctx.get(serializerCtx)
@@ -104,6 +102,10 @@ function toggleEditable(ctx: Ctx) {
   )
 }
 
+const setValue = (value: string) => {
+  editor.action(replaceAll(encode(value)))
+}
+
 // @ts-ignore
 window.getRect = getRect
 // @ts-ignore
@@ -114,3 +116,11 @@ window.getMarkdown = getMarkdown
 window.getHTML = getMDHTML
 // @ts-ignore
 window.simulateCardRender = simulateCardRender
+// @ts-ignore
+window.setValue = setValue
+
+// @ts-ignore
+window.isLoaded = (color: string) => {
+  document.body.style.backgroundColor = color
+  return "true"
+}

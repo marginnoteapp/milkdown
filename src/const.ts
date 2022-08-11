@@ -9,7 +9,14 @@ export const MN = {
   isMac: Application.sharedInstance().osType == OSType.macOS,
   app: Application.sharedInstance(),
   db: Database.sharedInstance(),
-  isZH: NSLocale.preferredLanguages()?.[0].startsWith("zh")
+  isZH: NSLocale.preferredLanguages()?.[0].startsWith("zh"),
+  colors: {
+    Gray: "#414141",
+    Default: "#FFFFFF",
+    Dark: "#000000",
+    Green: "#E9FBC7",
+    Sepia: "#F5EFDC"
+  }
 }
 
 export const Addon = {

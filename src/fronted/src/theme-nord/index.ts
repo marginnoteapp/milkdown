@@ -31,9 +31,17 @@ export const size = {
 }
 
 export const createTheme =
-  (isDarkMode: boolean) => (emotion: Emotion, manager: ThemeManager) => {
+  (isDarkMode: boolean, backgroundColor?: string) =>
+  (emotion: Emotion, manager: ThemeManager) => {
     const { css } = emotion
-    const colorSet = isDarkMode ? darkColor : lightColor
+    const colorSet = backgroundColor
+      ? {
+          ...(isDarkMode ? darkColor : lightColor),
+          surface: backgroundColor
+        }
+      : isDarkMode
+      ? darkColor
+      : lightColor
 
     manager.set(ThemeColor, options => {
       if (!options) return
@@ -130,18 +138,17 @@ export const createTheme =
     useAllPresetRenderer(manager, emotion)
   }
 
-export const getNord = (isDarkMode = false) =>
-  themeFactory((emotion, manager) => createTheme(isDarkMode)(emotion, manager))
-
-export const nordDark = getNord(true)
-export const nordLight = getNord(false)
-
-let darkMode = false
-if (typeof window !== "undefined") {
-  darkMode = Boolean(
-    window.matchMedia?.("(prefers-color-scheme: dark)").matches
+export const getNord = (isDarkMode = false, backgroundColor?: string) =>
+  themeFactory((emotion, manager) =>
+    createTheme(isDarkMode, backgroundColor)(emotion, manager)
   )
-}
-export const nord = getNord(darkMode)
+
+export const nordDark = (backgroundColor: string) =>
+  getNord(true, backgroundColor)
+export const nordLight = (backgroundColor: string) =>
+  getNord(false, backgroundColor)
+
+export const nord = (darkMode: boolean, backgroundColor?: string) =>
+  getNord(darkMode, backgroundColor)
 
 export { color, darkColor, lightColor } from "./nord"

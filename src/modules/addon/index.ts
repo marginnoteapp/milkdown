@@ -39,11 +39,6 @@ export default defineConfig({
       type: CellViewType.MuiltSelect,
       label: label.toolbar,
       option: ["Slash", "Tooltip", "Menu"]
-    },
-    {
-      key: "darkmode",
-      type: CellViewType.Switch,
-      label: label.darkmode
     }
   ]
 })

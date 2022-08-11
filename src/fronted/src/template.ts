@@ -1,5 +1,5 @@
 import { Editor, defaultValueCtx, editorViewOptionsCtx } from "@milkdown/core"
-import { nordDark, nordLight } from "./theme-nord"
+import { nord } from "./theme-nord"
 import { gfm } from "@milkdown/preset-gfm"
 import { emoji } from "@milkdown/plugin-emoji"
 import { prism } from "@milkdown/plugin-prism"
@@ -11,21 +11,17 @@ import "katex/dist/katex.min.css"
 import "prism-themes/themes/prism-nord.min.css"
 import { decode } from "../../utils/third party/base64"
 import { diagram } from "@milkdown/plugin-diagram"
+import { appendStyle, prismDark, prismLight } from "./theme-nord/prismCSS"
 
-const { content, dark } = JSON.parse(decode("@@params@@"))
+const { content, dark, color } = JSON.parse(decode("@@params@@"))
 
-// const { content, dark } = {
-//   content:
-//     "# hello world\n $$\n\\begin{aligned} \nx &= y\\\\\ny &= x\n\\end{aligned} \n$$",
-//   dark: false
-// }
-
+appendStyle(dark ? prismDark : prismLight)
 Editor.make()
   .config(ctx => {
     ctx.set(defaultValueCtx, content)
     ctx.set(editorViewOptionsCtx, { editable: () => false })
   })
-  .use(dark ? nordDark : nordLight)
+  .use(nord(dark, color))
   .use(prism)
   .use(gfm)
   .use(emoji)

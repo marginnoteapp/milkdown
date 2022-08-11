@@ -6,7 +6,6 @@ const globalProfilePreset = {
     panelControl: false,
     panelPosition: [0],
     panelHeight: [1],
-    darkmode: false,
     toolbar: [],
     compatibility: [0]
   }

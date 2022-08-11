@@ -62,11 +62,11 @@ const evaluateJavaScript = (webView: UIWebView, script: string) => {
 const delayBreak = async (
   times: number,
   sec: number,
-  f: () => boolean
+  f: () => MaybePromise<boolean>
 ): Promise<boolean> => {
   for (let i = 0; i < times; i++) {
     await delay(sec)
-    if (f()) return true
+    if (await f()) return true
   }
   return false
 }

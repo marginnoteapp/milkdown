@@ -49,14 +49,24 @@ export const initMarkdownEditController = () => {
   }
 
   const renderFunc = (html: string, text: string, respath: string) => {
-    const { darkmode } = self.globalProfile.addon
     return self.renderTemplate[text.includes("$") ? 0 : 1].replace(
       "@@params@@",
       Base64.encode(
-        JSON.stringify({
-          content: text,
-          dark: darkmode
-        })
+        JSON.stringify(
+          // MN.isMac ?
+          {
+            content: text,
+            dark: false,
+            color: "#fff"
+          }
+          // : {
+          //     content: text,
+          //     dark:
+          //       MN.app.currentTheme === "Gray" ||
+          //       MN.app.currentTheme === "Dark",
+          //     color: MN.colors[MN.app.currentTheme!]
+          //   }
+        )
       )
     )
   }

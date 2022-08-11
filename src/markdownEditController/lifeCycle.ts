@@ -1,5 +1,5 @@
 import { MN } from "~/const"
-import { delay, evaluateJavaScript } from "~/utils/common"
+import { delay, delayBreak, evaluateJavaScript } from "~/utils/common"
 import { encode } from "~/utils/third party/base64"
 
 let loaded = false
@@ -17,9 +17,33 @@ const viewDidLoad = () => {
 const viewWillAppear = (animated: boolean) => {
   self.webView.delegate = self
   loaded = false
+  self.view.backgroundColor = MN.app.defaultNotebookColor!
+  self.webView.backgroundColor = MN.app.defaultNotebookColor!
   self.webView.loadFileURLAllowingReadAccessToURL(
     NSURL.fileURLWithPath(MN.mainPath + "/milkdown.html"),
     NSURL.fileURLWithPath(MN.mainPath)
+  )
+}
+
+const webViewDidFinishLoad = async (webView: UIWebView) => {
+  loaded = true
+
+  await delayBreak(20, 0.01, async () => {
+    const ret = await evaluateJavaScript(
+      self.webView,
+      `isLoaded("${MN.colors[MN.app.currentTheme!]}")`
+    )
+    return ret == "true"
+  })
+  await delay(0.4)
+
+  await evaluateJavaScript(
+    self.webView,
+    `initMilkdown("${encode(self.text)}", ${JSON.stringify({
+      tools: self.globalProfile.addon.toolbar,
+      dark: MN.app.currentTheme === "Gray" || MN.app.currentTheme === "Dark",
+      color: MN.colors[MN.app.currentTheme!]
+    })})`
   )
 }
 
@@ -32,29 +56,16 @@ const viewWillDisappear = async (animated: boolean) => {
   const text = (await evaluateJavaScript(self.webView, "getMarkdown()")).trim()
   await evaluateJavaScript(self.webView, `simulateCardRender()`)
   const rect = await evaluateJavaScript(self.webView, "getRect()")
-  const { width, height } = JSON.parse(rect)
+  const { height } = JSON.parse(rect)
   self.retfunc({
     html,
     text,
     // 是否重新渲染
     dirty: self.text !== text,
-    size: { width, height: height - 50 }
+    size: { width: 420, height: height - 30 }
   })
   await evaluateJavaScript(self.webView, `setValue("")`)
   self.webView.delegate = null
-}
-
-const webViewDidFinishLoad = async (webView: UIWebView) => {
-  loaded = true
-  await delay(0.2)
-  // 有点坑爹
-  await evaluateJavaScript(
-    self.webView,
-    `initMilkdown("${encode(self.text)}", ${JSON.stringify({
-      tools: self.globalProfile.addon.toolbar,
-      dark: self.globalProfile.addon.darkmode
-    })})`
-  )
 }
 
 export default {
