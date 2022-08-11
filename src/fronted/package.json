@@ -1,11 +1,10 @@
 {
   "name": "milkdown",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "build:t": "vite build --config vite.template.ts"
+    "build": "vite build --mode milkdown && vite build --mode template && vite build --mode template-nomath"
   },
   "dependencies": {
     "@milkdown/core": "6.2.0",

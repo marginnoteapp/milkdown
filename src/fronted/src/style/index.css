@@ -3,9 +3,9 @@ body {
   font-size: 16;
 }
 
-.milkdown .editor>* {
+/* .milkdown .editor>* {
   margin: 0 0 1.5em 0px !important
-}
+} */
 
 .milkdown .editor {
   outline: none !important ;
@@ -35,5 +35,5 @@ body {
 
 .task-list-item label {
   left: -1.7em !important;
-  margin: 0.25em 0 !important;
+  margin: 0.5em 0 !important;
 }

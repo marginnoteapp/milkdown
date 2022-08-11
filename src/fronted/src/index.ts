@@ -3,15 +3,16 @@ import {
   defaultValueCtx,
   editorViewOptionsCtx,
   editorViewCtx,
-  serializerCtx
+  serializerCtx,
+  Ctx
 } from "@milkdown/core"
-import { decode, encode } from "../../utils/third party/base64"
-import { forceUpdate, replaceAll, getHTML } from "@milkdown/utils"
+import { decode } from "../../utils/third party/base64"
+import { getHTML, insert } from "@milkdown/utils"
 import { cursor } from "@milkdown/plugin-cursor"
 import { nordDark, nordLight } from "./theme-nord"
 import { diagram } from "@milkdown/plugin-diagram"
 import { clipboard } from "@milkdown/plugin-clipboard"
-import { gfm } from "@milkdown/preset-gfm"
+import { doc, gfm } from "@milkdown/preset-gfm"
 import { emoji } from "@milkdown/plugin-emoji"
 import { prism } from "@milkdown/plugin-prism"
 import { slash } from "@milkdown/plugin-slash"
@@ -21,13 +22,14 @@ import { indent } from "@milkdown/plugin-indent"
 import { upload } from "@milkdown/plugin-upload"
 import { tooltip } from "@milkdown/plugin-tooltip"
 import { math } from "@milkdown/plugin-math"
-import "material-icons/iconfont/material-icons.css"
+import "material-icons/iconfont/outlined.css"
 import "./style/index.css"
 import "./style/editor.css"
 import "katex/dist/katex.min.css"
 import "prism-themes/themes/prism-nord.min.css"
+import { TextSelection } from "@milkdown/prose/state"
 
-let editableStatus = true
+let editable = true
 let editor: Editor
 
 const initMilkdown = async (
@@ -40,7 +42,7 @@ const initMilkdown = async (
   const { dark, tools } = option
   editor = Editor.make().config(ctx => {
     ctx.set(defaultValueCtx, decode(defaultValue))
-    ctx.set(editorViewOptionsCtx, { editable: () => editableStatus })
+    ctx.set(editorViewOptionsCtx, { editable: () => editable })
   })
   if (tools.includes(0)) {
     editor = editor.use(slash)
@@ -66,15 +68,6 @@ const initMilkdown = async (
     .create()
 }
 
-const setEditable = (status: boolean) => {
-  editableStatus = status
-  editor.action(forceUpdate())
-}
-
-const setValue = (value: string) => {
-  editor.action(replaceAll(encode(value)))
-}
-
 const getMarkdown = () => {
   return editor.action(ctx => {
     const editorView = ctx.get(editorViewCtx)
@@ -86,26 +79,35 @@ const getMarkdown = () => {
 function getMDHTML() {
   return editor.action(getHTML())
 }
+
 function getRect() {
-  return JSON.stringify(
-    document.querySelector(".milkdown .editor")!.getBoundingClientRect()
-  )
+  const editor = document.querySelector(".milkdown .editor")!
+  editor.setAttribute("style", "width:400px !important;")
+  return JSON.stringify(editor.getBoundingClientRect())
 }
 
 function simulateCardRender() {
-  const table = document.querySelector(".milkdown .tableWrapper table")
-  if (table)
-    table.setAttribute("style", "width: 100% !important;margin: 0 !important;")
+  editor.action(toggleEditable)
+  document.querySelectorAll(".milkdown .tableWrapper table").forEach(k => {
+    k.setAttribute("style", "width: 100% !important;margin: 0 !important;")
+  })
+}
+
+function toggleEditable(ctx: Ctx) {
+  editable = !editable
+  const view = ctx.get(editorViewCtx)
+  const { tr } = view.state
+
+  const nextTr = Object.assign(Object.create(tr), tr).setTime(Date.now())
+  view.dispatch(
+    nextTr.setSelection(new TextSelection(view.state.doc.resolve(0)))
+  )
 }
 
 // @ts-ignore
 window.getRect = getRect
 // @ts-ignore
-window.setEditable = setEditable
-// @ts-ignore
 window.initMilkdown = initMilkdown
-// @ts-ignore
-window.setValue = setValue
 // @ts-ignore
 window.getMarkdown = getMarkdown
 // @ts-ignore

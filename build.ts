@@ -78,6 +78,7 @@ build({
         "mnaddon.json",
         "assets/icon",
         "assets/milkdown.html",
+        "assets/template-nomath.html",
         "assets/template.html"
       ].map(k => ({
         from: k,

@@ -50,7 +50,7 @@ export const initMarkdownEditController = () => {
 
   const renderFunc = (html: string, text: string, respath: string) => {
     const { darkmode } = self.globalProfile.addon
-    return self.renderTemplate.replace(
+    return self.renderTemplate[text.includes("$") ? 0 : 1].replace(
       "@@params@@",
       Base64.encode(
         JSON.stringify({
@@ -113,9 +113,10 @@ const sceneWillConnect = () => {
   self.settingViewController.docProfile = self.docProfile
   self.settingViewController.notebookProfile = self.notebookProfile
   self.markdownEditController = MarkdownEditController.new()
-  self.renderTemplate = NSString.stringWithContentsOfFile(
-    MN.mainPath + "/template.html"
-  )
+  self.renderTemplate = [
+    NSString.stringWithContentsOfFile(MN.mainPath + "/template.html"),
+    NSString.stringWithContentsOfFile(MN.mainPath + "/template-nomath.html")
+  ]
   self.markdownEditController.window = self.window
   self.markdownEditController.globalProfile = self.globalProfile
   self.markdownEditController.docProfile = self.docProfile

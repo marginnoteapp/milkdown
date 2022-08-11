@@ -27,7 +27,7 @@ declare global {
       size?: CGSize
     }) => void
     webView: UIWebView
-    renderTemplate: string
+    renderTemplate: string[]
     view: UIView
     window: UIWindow
     docmd5: string | undefined

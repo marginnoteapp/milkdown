@@ -30,16 +30,15 @@ const viewWillDisappear = async (animated: boolean) => {
   }
   const html = await evaluateJavaScript(self.webView, "getHTML()")
   const text = (await evaluateJavaScript(self.webView, "getMarkdown()")).trim()
-  await evaluateJavaScript(self.webView, `document.body.style.width = "400px"`)
   await evaluateJavaScript(self.webView, `simulateCardRender()`)
   const rect = await evaluateJavaScript(self.webView, "getRect()")
   const { width, height } = JSON.parse(rect)
   self.retfunc({
     html,
-    text: text.replace(/(?:\n)*$/, ""),
+    text,
     // 是否重新渲染
     dirty: self.text !== text,
-    size: { width, height }
+    size: { width, height: height - 50 }
   })
   await evaluateJavaScript(self.webView, `setValue("")`)
   self.webView.delegate = null

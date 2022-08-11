@@ -43,14 +43,14 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
     padding: 3.125em 1.25em;
     outline: none;
     & > * {
-      margin: 1.875em 0;
+      margin: 0.5em 0;
     }
   `
 
   const paragraph = css`
     p {
       font-size: 1em;
-      line-height: 1;
+      line-height: 1.5;
       letter-spacing: 0.5px;
     }
   `
