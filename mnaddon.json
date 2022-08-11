@@ -2,7 +2,7 @@
   "addonid": "marginnote.extension.milkdown",
   "author": "MN(ourongxing",
   "title": "Milkdown",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "marginnote_version_min": "3.7.18",
   "cert_key": "",
   "global_profile_key": "milkdown_profile_global",
