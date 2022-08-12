@@ -69,31 +69,32 @@ export const createTheme =
         const main = manager.get(ThemeColor, ["secondary", 0.38])
         const bg = manager.get(ThemeColor, ["secondary", 0.12])
         const hover = manager.get(ThemeColor, ["secondary"])
+
+        const scrollbar = css({
+          "&::-webkit-scrollbar": {
+            [direction === "y" ? "width" : "height"]: `${
+              type === "thin" ? 2 : 12
+            }px`,
+            backgroundColor: "transparent"
+          }
+        })
+
         return css`
           scrollbar-width: thin;
           scrollbar-color: ${main} ${bg};
           -webkit-overflow-scrolling: touch;
-
-          &::-webkit-scrollbar {
-            ${direction === "y" ? "width" : "height"}: ${type === "thin"
-              ? 2
-              : 12}px;
-            background-color: transparent;
-          }
-
+          ${scrollbar};
           &::-webkit-scrollbar-track {
             border-radius: 999px;
             background: transparent;
             border: 4px solid transparent;
           }
-
           &::-webkit-scrollbar-thumb {
             border-radius: 999px;
             background-color: ${main};
             border: ${type === "thin" ? 0 : 4}px solid transparent;
             background-clip: content-box;
           }
-
           &::-webkit-scrollbar-thumb:hover {
             background-color: ${hover};
           }
@@ -106,9 +107,9 @@ export const createTheme =
       const getShadow = (opacity: number) =>
         manager.get(ThemeColor, ["shadow", opacity])
       return css`
-        box-shadow: 0 ${lineWidth} ${lineWidth} ${getShadow(0.14)},
-          0 2px ${lineWidth} ${getShadow(0.12)},
-          0 ${lineWidth} 3px ${getShadow(0.2)};
+        // box-shadow: 0 ${lineWidth} ${lineWidth} ${getShadow(0.14)},
+        //   0 2px ${lineWidth} ${getShadow(0.12)},
+        //   0 ${lineWidth} 3px ${getShadow(0.2)};
       `
     })
 
@@ -120,9 +121,11 @@ export const createTheme =
           border: ${lineWidth} solid ${line};
         `
       }
-      return css`
-        ${`border-${direction}`}: ${lineWidth} solid ${line};
-      `
+      const upperCaseFirst = (str: string) =>
+        str.charAt(0).toUpperCase() + str.slice(1)
+      return css({
+        [`border${upperCaseFirst(direction)}`]: `${lineWidth} solid ${line}`
+      })
     })
 
     manager.set(ThemeIcon, icon => {

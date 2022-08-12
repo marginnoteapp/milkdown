@@ -22,12 +22,13 @@ import { indent } from "@milkdown/plugin-indent"
 import { upload } from "@milkdown/plugin-upload"
 import { tooltip } from "@milkdown/plugin-tooltip"
 import { math } from "@milkdown/plugin-math"
+import { block } from "@milkdown/plugin-block"
 import "material-icons/iconfont/outlined.css"
 import "./style/index.css"
 import "./style/editor.css"
 import "katex/dist/katex.min.css"
 import { TextSelection } from "@milkdown/prose/state"
-import { appendStyle, prismDark, prismLight } from "./theme-nord/prismCSS"
+import { appendStyle, prismDark, prismLight } from "./prismCSS"
 
 let editable = true
 let editor: Editor
@@ -50,6 +51,10 @@ async function initMilkdown(
   }
   if (tools.includes(2)) {
     editor = editor.use(menu)
+  }
+  if (tools.includes(3)) {
+    // @ts-ignore
+    editor = editor.use(block)
   }
   editor = await editor
     .use(nord(dark, color))
@@ -124,3 +129,5 @@ window.isLoaded = (color: string) => {
   document.body.style.backgroundColor = color
   return "true"
 }
+
+initMilkdown("", { color: "#333", dark: false, tools: [0, 1, 2, 3] })

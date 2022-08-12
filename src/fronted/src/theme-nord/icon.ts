@@ -139,6 +139,14 @@ const iconMapping: Record<Icon, IconMeta> = {
   sinkList: {
     label: "sink list",
     icon: "format_indent_increase"
+  },
+  dragHandle: {
+    label: "drag handle",
+    icon: "drag_indicator"
+  },
+  text: {
+    label: "text",
+    icon: "title"
   }
 }
 
@@ -149,7 +157,15 @@ export const getIcon = (id: Icon): IconValue | undefined => {
   }
   const span = document.createElement("span")
   span.className = "icon material-icons material-icons-outlined"
-  span.textContent = iconMapping[id].icon
+  const icon = iconMapping[id]
+  if (icon) {
+    span.textContent = icon.icon
+    span.dataset["label"] = icon.label
+  } else {
+    console.warn(
+      `Icon not found: "${id}", did you forget to add it to the icon mapping?`
+    )
+  }
 
   return {
     dom: span,

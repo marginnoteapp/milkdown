@@ -32,13 +32,13 @@ export default defineConfig({
       type: CellViewType.Select,
       label: label.compatible,
       help: help.compatible,
-      option: [option.compatibility, "MarkDown", "MyMarkDown"]
+      option: [option.compatibility, "MarkDown", "myMarkDown"]
     },
     {
       key: "toolbar",
       type: CellViewType.MuiltSelect,
       label: label.toolbar,
-      option: ["Slash", "Tooltip", "Menu"]
+      option: ["Slash", "Tooltip", "Menu", "Block"]
     }
   ]
 })

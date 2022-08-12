@@ -9,7 +9,7 @@ import "./style/template.css"
 import "prism-themes/themes/prism-nord.min.css"
 import { decode } from "../../utils/third party/base64"
 import { diagram } from "@milkdown/plugin-diagram"
-import { appendStyle, prismDark, prismLight } from "./theme-nord/prismCSS"
+import { appendStyle, prismDark, prismLight } from "./prismCSS"
 
 const { content, dark, color } = JSON.parse(decode("@@params@@"))
 

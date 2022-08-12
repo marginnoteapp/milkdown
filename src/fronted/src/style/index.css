@@ -18,11 +18,7 @@ body {
 }
 
 .milkdown .editor blockquote {
-  padding-left: 1.5em !important;
-}
-
-.milkdown ol,ul {
-  padding-inline-start: 26px !important;
+  padding-left: 1em !important;
 }
 
 .milkdown-menu-wrapper .milkdown {
@@ -33,9 +29,4 @@ body {
 .milkdown .editor table p {
   line-height: initial !important;
   padding: 1em 0;
-}
-
-.task-list-item label {
-  left: -1.7em !important;
-  margin: 0.5em 0 !important;
 }

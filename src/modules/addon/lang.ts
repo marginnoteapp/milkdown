@@ -12,7 +12,7 @@ const zh = {
     panel_height: "面板显示高度",
     panle_control: "双击打开面板",
     compatible: "兼容其他插件",
-    toolbar: "Milkdown 工具栏",
+    toolbar: "Milkdown 工具",
     darkmode: "Milkdown 暗黑模式",
     font_size: "卡片字体大小"
   },
@@ -36,7 +36,7 @@ const en: typeof zh = {
     panel_height: "Panel Height",
     panle_control: "Double Click to Open",
     compatible: "Compatible with others",
-    toolbar: "Milkdown Toolbar",
+    toolbar: "Milkdown Tools",
     darkmode: "Milkdown Darkmode",
     font_size: "Card Font Size"
   },

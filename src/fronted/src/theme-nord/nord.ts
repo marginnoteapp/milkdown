@@ -3,7 +3,7 @@ import type { Color } from "@milkdown/design-system"
 
 /* Copyright 2021, Milkdown by Mirone. */
 export const Nord = {
-  nord0: "#3e3e3f",
+  nord0: "#2e3440",
   nord1: "#3b4252",
   nord2: "#434c5e",
   nord3: "#4c566a",
