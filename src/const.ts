@@ -2,7 +2,6 @@ import { OSType } from "~/typings/enum"
 import mnaddon from "../mnaddon.json"
 
 export const MN = {
-  textColor: UIColor.blackColor(),
   mainPath: "",
   studyController: () =>
     Application.sharedInstance().studyController(self.window),
@@ -26,5 +25,8 @@ export const Addon = {
   key: mnaddon.addonid.split(".")[2],
   globalProfileKey: mnaddon.global_profile_key,
   docProfileKey: mnaddon.doc_profile_key,
-  notebookProfileKey: mnaddon.notebook_profile_key
+  notebookProfileKey: mnaddon.notebook_profile_key,
+  textColor: UIColor.blackColor(),
+  borderColor: UIColor.colorWithHexString("#8A95A2"),
+  buttonColor: UIColor.colorWithHexString("#8A95A2")
 }
