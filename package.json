@@ -1,7 +1,7 @@
 {
   "name": "milkdown",
   "author": "ourongxing",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "license": "MIT",
   "description": "",
   "scripts": {
@@ -35,7 +35,7 @@
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
     "esbuild": "^0.14.45",
-    "esbuild-plugin-mxn-copy": "^1.0.3",
+    "esbuild-plugin-mxn-copy": "^1.0.0",
     "eslint": "^8.11.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
