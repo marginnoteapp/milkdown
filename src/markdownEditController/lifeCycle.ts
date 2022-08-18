@@ -61,8 +61,14 @@ const viewWillDisappear = async (animated: boolean) => {
     html,
     text,
     // 是否重新渲染
-    dirty: self.text !== text,
-    size: { width: 420, height: height - 50 }
+    dirty: self.text !== text || text.startsWith("$$"),
+    /**
+     * 卡片渲染是 10 10 0 10，上 右 下 左
+     * 编辑是 10 30 10 30
+     * 宽度: 400 + 20
+     * 高度: height - 10
+     */
+    size: { width: 420, height: height - 10 }
   })
   await evaluateJavaScript(self.webView, `setValue("")`)
   self.webView.delegate = null
