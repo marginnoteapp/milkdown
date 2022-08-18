@@ -1,10 +1,11 @@
 {
   "name": "milkdown",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --mode milkdown && vite build --mode template && vite build --mode template-nomath"
+    "build": "vite build --mode milkdown && vite build --mode template && vite build --mode template-nomath",
+    "b": "vite build --mode milkdown"
   },
   "dependencies": {
     "@milkdown/core": "6.3.2",
@@ -27,17 +28,18 @@
     "@milkdown/prose": "6.3.2",
     "@milkdown/utils": "6.3.2",
     "katex": "^0.16.0",
-    "material-icons": "^1.11.9",
+    "material-icons": "^1.11.10",
     "prism-themes": "^1.9.0",
-    "remark-directive": "^2.0.1"
+    "remark-directive": "^2.0.1",
+    "remark-math": "^5.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",
     "@milkdown/design-system": "6.3.2",
     "@milkdown/theme-pack-helper": "6.3.2",
-    "@types/node": "^18.7.1",
+    "@types/node": "^18.7.6",
     "typescript": "4.7.4",
-    "vite": "3.0.5",
+    "vite": "3.0.8",
     "vite-plugin-singlefile": "^0.11.1"
   },
   "keywords": []

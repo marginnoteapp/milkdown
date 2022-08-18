@@ -23,13 +23,14 @@ specifiers:
   '@milkdown/prose': 6.3.2
   '@milkdown/theme-pack-helper': 6.3.2
   '@milkdown/utils': 6.3.2
-  '@types/node': ^18.7.1
+  '@types/node': ^18.7.6
   katex: ^0.16.0
-  material-icons: ^1.11.9
+  material-icons: ^1.11.10
   prism-themes: ^1.9.0
   remark-directive: ^2.0.1
+  remark-math: ^5.1.1
   typescript: 4.7.4
-  vite: 3.0.5
+  vite: 3.0.8
   vite-plugin-singlefile: ^0.11.1
 
 dependencies:
@@ -53,18 +54,19 @@ dependencies:
   '@milkdown/prose': 6.3.2
   '@milkdown/utils': 6.3.2_fymy6lu7m3ul2nmjngv7iuga4u
   katex: 0.16.0
-  material-icons: 1.11.9
+  material-icons: 1.11.10
   prism-themes: 1.9.0
   remark-directive: 2.0.1
+  remark-math: 5.1.1
 
 devDependencies:
   '@babel/core': 7.18.10
   '@milkdown/design-system': 6.3.2_ifl757d7xtx3rchexmhu63fjmi
   '@milkdown/theme-pack-helper': 6.3.2_fymy6lu7m3ul2nmjngv7iuga4u
-  '@types/node': 18.7.1
+  '@types/node': 18.7.6
   typescript: 4.7.4
-  vite: 3.0.5
-  vite-plugin-singlefile: 0.11.1_vite@3.0.5
+  vite: 3.0.8
+  vite-plugin-singlefile: 0.11.1_vite@3.0.8
 
 packages:
 
@@ -716,8 +718,8 @@ packages:
     resolution: {integrity: sha512-0fRfA90FWm6KJfw6P9QGyo0HDTCmthZ7cWaBQndITlaWLTZ6njRyKwrwpzpg+n6kBXBIGKeUHEQuBx7bphGJkA==}
     dev: false
 
-  /@types/node/18.7.1:
-    resolution: {integrity: sha512-GKX1Qnqxo4S+Z/+Z8KKPLpH282LD7jLHWJcVryOflnsnH+BtSDfieR6ObwBMwpnNws0bUK8GI7z0unQf9bARNQ==}
+  /@types/node/18.7.6:
+    resolution: {integrity: sha512-EdxgKRXgYsNITy5mjjXjVE/CS8YENSdhiagGrLqjG0pvA2owgJ6i4l7wy/PFZGC0B1/H20lWKN7ONVDNYDZm7A==}
     dev: true
 
   /@types/parse-json/4.0.0:
@@ -1817,8 +1819,8 @@ packages:
     resolution: {integrity: sha512-y8j3a5/DkJCmS5x4dMCQL+OR0+2EAq3DOtio1COSHsmW2BGXnNCK3v12hJt1LrUz5iZH5g0LmuYOjDdI+czghA==}
     dev: false
 
-  /material-icons/1.11.9:
-    resolution: {integrity: sha512-5dxJ7GyWaAn/s2TqZcLKFT2/AVcKvLJCIiRRvX7w+vx5CA9v3FeRCGoJhB0ChS/lybQHP+W9HO867KiaeQGjsw==}
+  /material-icons/1.11.10:
+    resolution: {integrity: sha512-1nGlVYwH98BQGSoxHf1QCCDll6AmnkxuATjTHREvy8BSEc6EfRkvcsQwEmSgAY7qcKLV3Ip81u9YEiH/sjQgkg==}
     dev: false
 
   /mdast-util-definitions/5.1.1:
@@ -2668,17 +2670,17 @@ packages:
       unist-util-stringify-position: 3.0.2
       vfile-message: 3.1.2
 
-  /vite-plugin-singlefile/0.11.1_vite@3.0.5:
+  /vite-plugin-singlefile/0.11.1_vite@3.0.8:
     resolution: {integrity: sha512-ZTT3XA2AM7rOf4UGmEM+FmMht000Uuc6OJSdlYqddFE9y7IrGDnNhFVQ/TZQMAFzZ0dYX3JzknAmrdKWe6s0xg==}
     peerDependencies:
       vite: ^2.9.13 || ^3.0.0
     dependencies:
       micromatch: 4.0.5
-      vite: 3.0.5
+      vite: 3.0.8
     dev: true
 
-  /vite/3.0.5:
-    resolution: {integrity: sha512-bRvrt9Tw8EGW4jj64aYFTnVg134E8hgDxyl/eEHnxiGqYk7/pTPss6CWlurqPOUzqvEoZkZ58Ws+Iu8MB87iMA==}
+  /vite/3.0.8:
+    resolution: {integrity: sha512-AOZ4eN7mrkJiOLuw8IA7piS4IdOQyQCA81GxGsAQvAZzMRi9ZwGB3TOaYsj4uLAWK46T5L4AfQ6InNGlxX30IQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:

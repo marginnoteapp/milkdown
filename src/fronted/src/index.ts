@@ -12,7 +12,7 @@ import { cursor } from "@milkdown/plugin-cursor"
 import { nord } from "./theme-nord"
 import { diagram } from "@milkdown/plugin-diagram"
 import { clipboard } from "@milkdown/plugin-clipboard"
-import { gfm } from "@milkdown/preset-gfm"
+import { gfm } from "./preset-gfm"
 import { emoji } from "@milkdown/plugin-emoji"
 import { prism } from "@milkdown/plugin-prism"
 import { slash } from "@milkdown/plugin-slash"
@@ -21,7 +21,7 @@ import { history } from "@milkdown/plugin-history"
 import { indent } from "@milkdown/plugin-indent"
 import { upload } from "@milkdown/plugin-upload"
 import { tooltip } from "@milkdown/plugin-tooltip"
-import { math } from "@milkdown/plugin-math"
+import { math } from "./plugin-math"
 import { block } from "@milkdown/plugin-block"
 import "material-icons/iconfont/outlined.css"
 import "./style/index.css"
@@ -130,4 +130,4 @@ window.isLoaded = (color: string) => {
   return "true"
 }
 
-initMilkdown("", { color: "#333", dark: false, tools: [0, 1, 2, 3] })
+// initMilkdown()
