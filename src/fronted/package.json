@@ -31,7 +31,8 @@
     "material-icons": "^1.11.10",
     "prism-themes": "^1.9.0",
     "remark-directive": "^2.0.1",
-    "remark-math": "^5.1.1"
+    "remark-math": "^5.1.1",
+    "smooth-scroll-into-view-if-needed": "^1.1.33"
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",

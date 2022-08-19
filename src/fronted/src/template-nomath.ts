@@ -1,6 +1,6 @@
 import { Editor, defaultValueCtx, editorViewOptionsCtx } from "@milkdown/core"
-import { nord } from "./theme-nord"
-import { gfm } from "./preset-gfm"
+import { nord } from "./library/theme-nord"
+import { gfm } from "./library/preset-gfm"
 import { emoji } from "@milkdown/plugin-emoji"
 import { prism } from "@milkdown/plugin-prism"
 import "material-icons/iconfont/outlined.css"
