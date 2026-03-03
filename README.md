@@ -6,6 +6,7 @@
 
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Status-Deprecated-d73a49?style=flat&labelColor=2E72E7" alt="status">
   <a href="https://github.com/marginnoteapp/milkdown/network/members"><img src="https://img.shields.io/github/forks/marginnoteapp/milkdown.svg?style=flat" alt="forks"></a>
   <a href="https://github.com/marginnoteapp/milkdown/stargazers"><img src="https://img.shields.io/github/stars/marginnoteapp/milkdown.svg?style=flat" alt="stars"></a>
   <a href="https://github.com/marginnoteapp/milkdown/blob/main/package.json"><img src="https://img.shields.io/badge/version-v1.0.6-orange" alt="version"></a>
